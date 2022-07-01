@@ -1,3 +1,6 @@
+use bank::account::Account;
+use bank::account::transaction::{Transaction, TransactionRepository};
+
 struct Console {
     buffer: String
 }
@@ -6,6 +9,12 @@ impl Console {
         Self {
             buffer: String::new(),
         }
+    }
+}
+struct Repository;
+impl TransactionRepository for Repository {
+    fn add(&self, transaction: Transaction) {
+        todo!()
     }
 }
 
