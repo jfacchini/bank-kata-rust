@@ -1,3 +1,6 @@
+use bank::account::Account;
+use bank::account::transaction::{Transaction, TransactionRepository};
+
 struct Console {
     buffer: String
 }
@@ -8,11 +11,17 @@ impl Console {
         }
     }
 }
+struct Repository;
+impl TransactionRepository for Repository {
+    fn add(&self, transaction: Transaction) {
+        todo!()
+    }
+}
 
 #[test]
 fn print_statement_lists_the_account_transactions_in_reverse_chronological_order() {
     let console = Console::new();
-    let account = Account::new();
+    let account = Account::new(Box::new(Repository));
 
     account.deposit(1000);
     account.deposit(2000);
